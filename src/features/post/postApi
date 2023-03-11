@@ -1,0 +1,24 @@
+import axios from '../../utils/axios.js'
+
+
+export const getPost = async (id) => {
+    const res = await axios.get(`/blogs/${id}`)
+    return res.data
+}
+
+export const updateLikeCount = async ({ id, likeCount }) => {
+    const res = await axios.patch(`/blogs/${id}`, {
+        likes: likeCount + 1,
+    })
+    return await res.data;
+
+}
+export const updateSaveState = async ({ id, saveState }) => {
+    const res = await axios.patch(`/blogs/${id}`, {
+        isSaved: !saveState,
+    })
+    return await res.data;
+
+}
+
+
